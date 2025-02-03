@@ -3,8 +3,10 @@ import { Client, IDatabase } from "./IDatabaseClient";
 
 export class DatabaseClientPool implements IDatabase {
   private isConnect = false;
-
-  constructor(private prisma: PrismaClient = new PrismaClient()) {}
+  private prisma: PrismaClient = new PrismaClient();
+  constructor() {
+    this.connect();
+  }
 
   async connect(): Promise<void> {
     try {

@@ -2,7 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
-import "./lib/core/BaseRepository";
+import "./lib/core/repository/BaseRepository";
 
 dotenv.config();
 

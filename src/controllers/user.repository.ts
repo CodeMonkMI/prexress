@@ -1,4 +1,4 @@
-import { BaseRepository } from "@/lib/core/BaseRepository";
+import { BaseRepository } from "@/lib/core/repository/BaseRepository";
 import { DatabaseClientPool } from "@/lib/db/DatabaseClientPool";
 import { Prisma } from "@prisma/client";
 

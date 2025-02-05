@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import { DatabaseClientPool } from "../db/DatabaseClientPool";
-import { IBaseRepository, ID } from "./IBaseRepository";
+import { DatabaseClientPool } from "../../db/DatabaseClientPool";
+import { IBaseRepository, ID, Options } from "./IBaseRepository";
 
 // Update the BaseRepository class definition to include the delegate type
 export abstract class BaseRepository<
@@ -14,28 +14,39 @@ export abstract class BaseRepository<
   ) {}
 
   async findAll(
-    options: Prisma.Args<TDelegate, "findMany">["where"]
-  ): Promise<TDelegate[]> {
+    options?: Options<TDelegate>
+  ): Promise<
+    Prisma.Result<TDelegate, { options?: Options<TDelegate> }, "findMany">
+  > {
     return this.database.executeQuery("Find All", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
-
-      return modelDelegate.findMany({
-        where: options,
-      });
+      db.user.findMany(options);
+      return modelDelegate.findMany(options);
     });
   }
   findOne(
-    options: Prisma.Args<TDelegate, "findFirst">["where"]
-  ): Promise<TDelegate> {
+    options?: Options<TDelegate>
+  ): Promise<
+    Prisma.Result<
+      TDelegate,
+      { where: Prisma.Args<TDelegate, "findFirst">["data"] },
+      "findFirst"
+    >
+  > {
     return this.database.executeQuery("Find One", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
-
-      return modelDelegate.findFirst({
-        where: options,
-      });
+      return modelDelegate.findFirst(options);
     });
   }
-  findById(id: ID): Promise<TDelegate> {
+  findById(
+    id: ID
+  ): Promise<
+    Prisma.Result<
+      TDelegate,
+      { where: Prisma.Args<TDelegate, "findUnique">["data"] },
+      "findUnique"
+    >
+  > {
     return this.database.executeQuery("Find By Id", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.findFirst({
@@ -46,30 +57,34 @@ export abstract class BaseRepository<
     });
   }
   async findAndCount(
-    options: Prisma.Args<TDelegate, "findMany">["where"]
-  ): Promise<[TDelegate[], number]> {
+    options?: Options<TDelegate>
+  ): Promise<
+    [
+      Prisma.Result<
+        TDelegate,
+        { where?: Prisma.Args<TDelegate, "findMany">["where"] },
+        "findMany"
+      >,
+      number
+    ]
+  > {
     return this.database.executeQuery(
       "Find and Count",
       async (db: PrismaClient) => {
         const modelDelegate = db[this.modelKey] as any;
 
-        const data = modelDelegate.findFirst({
-          where: options,
-        });
+        const data = modelDelegate.findFirst(options);
         const count = await this.count(options);
-
         return [data, count];
       }
     );
   }
 
-  count(where: Prisma.Args<TDelegate, "findMany">["where"]): Promise<number> {
+  count(options?: Options<TDelegate>): Promise<number> {
     return this.database.executeQuery("Count", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
 
-      return modelDelegate.count({
-        where,
-      });
+      return modelDelegate.count(options);
     });
   }
 
@@ -126,7 +141,7 @@ export abstract class BaseRepository<
   }
 
   // mutation: delete
-  delete(id: ID): Promise<Boolean> {
+  delete(id: ID): Promise<Prisma.Result<TDelegate, { id: ID }, "delete">> {
     return this.database.executeQuery("Delete", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.delete({
@@ -136,7 +151,9 @@ export abstract class BaseRepository<
       });
     });
   }
-  deleteMany(ids: ID[]): Promise<Boolean[]> {
+  deleteMany(
+    ids: ID[]
+  ): Promise<Prisma.Result<TDelegate, { ids: ID[] }, "deleteMany">> {
     return this.database.executeQuery("Delete Many", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.deleteMany({
@@ -149,17 +166,13 @@ export abstract class BaseRepository<
     });
   }
 
-  checkExists(
-    where: Prisma.Args<TDelegate, "findFirst">["where"]
-  ): Promise<boolean> {
+  checkExists(options?: Options<TDelegate>): Promise<boolean> {
     return this.database.executeQuery(
       "Check Exists",
       async (db: PrismaClient) => {
         const modelDelegate = db[this.modelKey] as any;
 
-        const data = await modelDelegate.findFirst({
-          where,
-        });
+        const data = await modelDelegate.findFirst(options);
         return !!data;
       }
     );

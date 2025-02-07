@@ -7,11 +7,11 @@ export abstract class BaseService<TDelegate>
 {
   constructor(private readonly repository: BaseRepository<TDelegate>) {}
   async find(
-    where: Prisma.Args<TDelegate, "findMany">["data"]
+    where: Prisma.Args<TDelegate, "findMany">["where"]
   ): Promise<
     Prisma.Result<
       TDelegate,
-      { where: Prisma.Args<TDelegate, "findMany">["data"] },
+      { where: Prisma.Args<TDelegate, "findMany">["where"] },
       "findMany"
     >
   > {
@@ -24,11 +24,11 @@ export abstract class BaseService<TDelegate>
     }
   }
   findOne(
-    where?: Prisma.Args<TDelegate, "findFirst">["data"]
+    where?: Prisma.Args<TDelegate, "findFirst">["where"]
   ): Promise<
     Prisma.Result<
       TDelegate,
-      { where: Prisma.Args<TDelegate, "findFirst">["data"] },
+      { where: Prisma.Args<TDelegate, "findFirst">["where"] },
       "findFirst"
     >
   > {
@@ -70,7 +70,7 @@ export abstract class BaseService<TDelegate>
   ): Promise<
     Prisma.Result<
       TDelegate,
-      { data: Prisma.Args<TDelegate, "update">["data"] },
+      { data: Prisma.Args<TDelegate, "update">["data"]; id: ID },
       "update"
     >
   > {

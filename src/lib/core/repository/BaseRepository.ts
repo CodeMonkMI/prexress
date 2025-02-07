@@ -20,7 +20,6 @@ export abstract class BaseRepository<
   > {
     return this.database.executeQuery("Find All", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
-      db.user.findMany(options);
       return modelDelegate.findMany(options);
     });
   }

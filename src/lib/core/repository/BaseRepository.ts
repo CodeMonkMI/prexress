@@ -88,19 +88,27 @@ export abstract class BaseRepository<
   }
 
   // mutation: create
-  create(data: Prisma.Args<TDelegate, "create">["data"]): Promise<any> {
+  create(
+    data: Prisma.Args<TDelegate, "create">["data"],
+    select: Options<TDelegate>["select"]
+  ): Promise<any> {
     return this.database.executeQuery("Create", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.create({
         data,
+        select,
       });
     });
   }
-  createMany(data: Prisma.Args<TDelegate, "create">["data"][]): Promise<any[]> {
+  createMany(
+    data: Prisma.Args<TDelegate, "create">["data"][],
+    select: Options<TDelegate>["select"]
+  ): Promise<any[]> {
     return this.database.executeQuery("Create Many", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.createMany({
         data,
+        select,
       });
     });
   }
@@ -108,7 +116,8 @@ export abstract class BaseRepository<
   // mutation: update
   update(
     id: ID,
-    data: Prisma.Args<TDelegate, "update">["data"]
+    data: Prisma.Args<TDelegate, "update">["data"],
+    select: Options<TDelegate>["select"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -123,18 +132,21 @@ export abstract class BaseRepository<
           id,
         },
         data,
+        select,
       });
     });
   }
   updateMany(
     where: Prisma.Args<TDelegate, "findMany">["where"],
-    data: Prisma.Args<TDelegate, "update">["data"][]
+    data: Prisma.Args<TDelegate, "update">["data"][],
+    select: Options<TDelegate>["select"]
   ): Promise<TDelegate[]> {
     return this.database.executeQuery("Update Many", (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
       return modelDelegate.updateMany({
         where,
         data,
+        select,
       });
     });
   }

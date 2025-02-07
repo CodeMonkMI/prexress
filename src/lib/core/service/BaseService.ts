@@ -1,11 +1,15 @@
 import { Prisma } from "@prisma/client";
 import { BaseRepository } from "../repository/BaseRepository";
+import { BaseSelector } from "../selector/BaseSelector";
 import { IBaseService, ID } from "./IBaseService";
 
 export abstract class BaseService<TDelegate>
   implements IBaseService<TDelegate>
 {
-  constructor(private readonly repository: BaseRepository<TDelegate>) {}
+  constructor(
+    private readonly repository: BaseRepository<TDelegate>,
+    private readonly selector: BaseSelector<TDelegate>
+  ) {}
   async find(
     where: Prisma.Args<TDelegate, "findMany">["where"]
   ): Promise<
@@ -18,6 +22,7 @@ export abstract class BaseService<TDelegate>
     try {
       return this.repository.findAll({
         where,
+        select: this.selector.find,
       });
     } catch (error) {
       throw new Error(`[Base service] FindAll Fetched failed `);
@@ -35,6 +40,7 @@ export abstract class BaseService<TDelegate>
     try {
       return this.repository.findOne({
         where,
+        select: this.selector.findOne,
       });
     } catch (error) {
       throw new Error(`[Base service] FindAll Fetched failed `);
@@ -59,7 +65,7 @@ export abstract class BaseService<TDelegate>
     >
   > {
     try {
-      return this.repository.create(data);
+      return this.repository.create(data, this.selector.create);
     } catch (error) {
       throw new Error(`[Base service] Create - failed `);
     }
@@ -75,7 +81,7 @@ export abstract class BaseService<TDelegate>
     >
   > {
     try {
-      return this.repository.update(id, data);
+      return this.repository.update(id, data, this.selector.update);
     } catch (error) {
       throw new Error(`[Base service] Create - failed `);
     }

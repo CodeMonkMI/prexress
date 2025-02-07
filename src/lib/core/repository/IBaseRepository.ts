@@ -64,7 +64,8 @@ export interface IBaseRepository<TDelegate> {
   // mutation: create
   // Instead of Promise<any>
   create(
-    data: Prisma.Args<TDelegate, "create">["data"]
+    data: Prisma.Args<TDelegate, "create">["data"],
+    select: Options<TDelegate>["select"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -76,7 +77,8 @@ export interface IBaseRepository<TDelegate> {
   // Instead of Promise<any>
   update(
     id: ID,
-    data: Prisma.Args<TDelegate, "update">["data"]
+    data: Prisma.Args<TDelegate, "update">["data"],
+    select: Options<TDelegate>["select"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -87,7 +89,8 @@ export interface IBaseRepository<TDelegate> {
 
   updateMany(
     where: Prisma.Args<TDelegate, "findMany">["where"],
-    data: Prisma.Args<TDelegate, "update">["data"][]
+    data: Prisma.Args<TDelegate, "update">["data"][],
+    select: Options<TDelegate>["select"]
   ): Promise<any>;
 
   // mutation: delete

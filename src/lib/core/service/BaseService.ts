@@ -11,7 +11,7 @@ export abstract class BaseService<TDelegate>
     private readonly selector: BaseSelector<TDelegate>
   ) {}
   async find(
-    where: Prisma.Args<TDelegate, "findMany">["where"]
+    where?: Prisma.Args<TDelegate, "findMany">["where"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -22,10 +22,9 @@ export abstract class BaseService<TDelegate>
     try {
       return this.repository.findAll({
         where,
-        select: this.selector.find,
       });
     } catch (error) {
-      throw new Error(`[Base service] FindAll Fetched failed `);
+      throw new Error(`[Base service] FindAll Fetched failed`);
     }
   }
   findOne(

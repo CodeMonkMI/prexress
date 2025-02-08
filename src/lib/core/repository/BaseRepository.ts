@@ -18,8 +18,9 @@ export abstract class BaseRepository<
   ): Promise<
     Prisma.Result<TDelegate, { options?: Options<TDelegate> }, "findMany">
   > {
-    return this.database.executeQuery("Find All", (db: PrismaClient) => {
+    return this.database.executeQuery("Find All", async (db: PrismaClient) => {
       const modelDelegate = db[this.modelKey] as any;
+
       return modelDelegate.findMany(options);
     });
   }

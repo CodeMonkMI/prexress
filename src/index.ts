@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 import "./lib/core/repository/BaseRepository";
+import userRouter from "./router/user.router";
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // health route
-app.get("/health", (_req, res: Response) => {
+app.get("/health", (req: Request, res: Response): any => {
   try {
     return res.status(200).json({ message: "UP" });
   } catch (e) {
@@ -26,6 +27,8 @@ app.get("/health", (_req, res: Response) => {
 app.get("/", (req: Request, res: Response) => {
   console.log("object");
 });
+
+app.use("/user", userRouter);
 
 // 404 not found handler
 app.use((_req, res: Response) => {

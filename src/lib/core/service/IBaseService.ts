@@ -4,7 +4,7 @@ export type ID = string | number;
 
 export type IBaseService<TDelegate> = {
   find(
-    where: Prisma.Args<TDelegate, "findMany">["data"]
+    where?: Prisma.Args<TDelegate, "findMany">["data"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -13,7 +13,7 @@ export type IBaseService<TDelegate> = {
     >
   >;
   findOne(
-    where: Prisma.Args<TDelegate, "findFirst">["data"]
+    where?: Prisma.Args<TDelegate, "findFirst">["data"]
   ): Promise<
     Prisma.Result<
       TDelegate,
@@ -22,7 +22,7 @@ export type IBaseService<TDelegate> = {
     >
   >;
   findByID(
-    where: Prisma.Args<TDelegate, "findUnique">["data"]
+    where?: Prisma.Args<TDelegate, "findUnique">["data"]
   ): Promise<
     Prisma.Result<
       TDelegate,

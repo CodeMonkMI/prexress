@@ -7,5 +7,3 @@ export class UserRepository extends BaseRepository<Prisma.UserDelegate> {
     super(database, "user");
   }
 }
-
-const a = new UserRepository(new DatabaseClientPool());

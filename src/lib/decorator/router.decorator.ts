@@ -28,7 +28,7 @@ function Route(
       middlewares,
       methodName: propertyKey.toString(),
     });
-    Reflect.defineMetadata(ROUTE_KEY, target, routes);
+    Reflect.defineMetadata(ROUTE_KEY, routes, target);
 
     return descriptor;
   };

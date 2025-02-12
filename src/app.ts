@@ -2,8 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
-
-import userRouter from "./router/user.router";
+import { UserController } from "./controllers/user.controller";
+import registerController from "./lib/core/controller/registerControllers";
 
 dotenv.config();
 
@@ -29,7 +29,7 @@ export function createApp() {
     console.log("object");
   });
 
-  app.use("/user", userRouter);
+  registerController(app, [UserController]);
 
   // 404 not found handler
   app.use((_req, res: Response) => {

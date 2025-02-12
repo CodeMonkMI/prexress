@@ -35,6 +35,7 @@ export default function registerController(
           Controller
         ) as RequestHandler[]) || [],
     };
+
     if (!controllerMetaData.basePath) {
       throw new Error(
         `[registerController]: base must be defined for controller ${Controller.name}`

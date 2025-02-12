@@ -2,7 +2,9 @@ import { Controller } from "@/lib/decorator/controller.decorator";
 import { GET, POST } from "@/lib/decorator/router.decorator";
 import { UserService } from "@/services/user.service";
 import { NextFunction, Request, Response } from "express";
+import { injectable } from "tsyringe";
 
+@injectable()
 @Controller("/user")
 export class UserController {
   constructor(private readonly userService: UserService) {}

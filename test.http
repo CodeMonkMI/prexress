@@ -1,0 +1,9 @@
+# GET https://localhost:5000/user/all HTTP/1.1
+
+GET http://localhost:5000/ HTTP/1.1
+
+###
+GET http://localhost:5000/health HTTP/1.1
+
+###
+GET http://localhost:5000/user/all HTTP/1.1

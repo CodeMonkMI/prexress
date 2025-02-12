@@ -1,47 +1,20 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
-import morgan from "morgan";
-import "./lib/core/repository/BaseRepository";
-import userRouter from "./router/user.router";
-
-dotenv.config();
-
-const app: Express = express();
-
-// basic middlewares
-app.use(cors({ origin: true }));
-app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// health route
-app.get("/health", (req: Request, res: Response): any => {
-  try {
-    return res.status(200).json({ message: "UP" });
-  } catch (e) {
-    return res.status(500).json({ message: "DOWN" });
-  }
-});
-
-app.get("/", (req: Request, res: Response) => {
-  console.log("object");
-});
-
-app.use("/user", userRouter);
-
-// 404 not found handler
-app.use((_req, res: Response) => {
-  res.status(404).json({ message: "Not found" });
-});
-
-// 500 internal server error handler
-app.use((err: any, _req: any, res: Response, _next: any) => {
-  console.error(err);
-  res.status(500).json({ message: "Internal Server Error" });
-});
-
+import http from "http";
+import { createApp } from "./app";
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+let server: http.Server;
+async function main() {
+  try {
+    const app = createApp();
+
+    server = http.createServer(app);
+
+    server.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.log("failed to start app");
+    process.exit(1);
+  }
+}
+
+main();

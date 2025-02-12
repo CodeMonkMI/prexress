@@ -12,3 +12,5 @@ export interface IDatabase {
     queryFn: (db: Client) => Promise<T>
   ): Promise<T>;
 }
+
+export const DatabaseClientToken = Symbol("DatabaseClientToken");

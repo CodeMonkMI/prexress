@@ -37,10 +37,10 @@ function Route(
 export const GET = (path: string, middlewares: RequestHandler[] = []) =>
   Route("get", path, middlewares);
 export const POST = (path: string, middlewares: RequestHandler[] = []) =>
-  Route("get", path, middlewares);
+  Route("post", path, middlewares);
 export const PUT = (path: string, middlewares: RequestHandler[] = []) =>
-  Route("get", path, middlewares);
+  Route("put", path, middlewares);
 export const PATCH = (path: string, middlewares: RequestHandler[] = []) =>
-  Route("get", path, middlewares);
+  Route("patch", path, middlewares);
 export const DELETE = (path: string, middlewares: RequestHandler[] = []) =>
-  Route("get", path, middlewares);
+  Route("delete", path, middlewares);

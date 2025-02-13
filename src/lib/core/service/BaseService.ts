@@ -24,6 +24,7 @@ export abstract class BaseService<TDelegate>
         where,
       });
     } catch (error) {
+      console.log(error);
       throw new Error(`[Base service] FindAll Fetched failed`);
     }
   }

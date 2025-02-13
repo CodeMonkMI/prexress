@@ -18,6 +18,7 @@ export abstract class BaseSelector<TDelegate>
     for (const key of keys) {
       result[key] = true;
     }
+    result["id"] = true;
     return result;
   }
 

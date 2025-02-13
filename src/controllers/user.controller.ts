@@ -1,5 +1,5 @@
-import { Controller } from "@/lib/decorator/controller.decorator";
-import { GET, POST } from "@/lib/decorator/router.decorator";
+import { Controller } from "@/lib/core/decorator/controller.decorator";
+import { GET, POST } from "@/lib/core/decorator/router.decorator";
 import { UserService } from "@/services/user.service";
 import { NextFunction, Request, Response } from "express";
 import { autoInjectable } from "tsyringe";

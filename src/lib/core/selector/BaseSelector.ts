@@ -15,10 +15,12 @@ export abstract class BaseSelector<TDelegate>
     const keys = Object.keys(this.getDelegatePrototype() as any) as Array<
       keyof TDelegate
     >;
+
     for (const key of keys) {
       result[key] = true;
     }
     result["id"] = true;
+    console.log(result);
     return result;
   }
 

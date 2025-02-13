@@ -1,13 +1,13 @@
+import { Application, RequestHandler, Router } from "express";
+import "reflect-metadata";
+import { container } from "tsyringe";
 import {
   CONTROLLER_KEY,
   CONTROLLER_MIDDLEWARE_KEY,
   MIDDLEWARE_KEY,
   ROUTE_KEY,
-} from "@/lib/decorator/decorator.keys";
-import { RouteDefinition } from "@/lib/decorator/router.decorator";
-import { Application, RequestHandler, Router } from "express";
-import "reflect-metadata";
-import { container } from "tsyringe";
+} from "../decorator/decorator.keys";
+import { RouteDefinition } from "../decorator/router.decorator";
 
 type Constructor = new (...args: any[]) => {};
 type ControllerMetaData = {

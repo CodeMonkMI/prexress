@@ -1,16 +1,32 @@
 {
-  "name": "prisma",
+  "name": "code-monk-testing-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A TypeScript framework scaffolding tool",
+  "main": "dist/cli.js",
+  "bin": {
+    "-create-code-monk-testing-app": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc && tsc-alias",
-    "migrate:dev": "prisma migrate dev"
+    "migrate:dev": "prisma migrate dev",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "typescript",
+    "framework",
+    "scaffolding",
+    "cli"
+  ],
+  "author": "Your Name",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "ts-node-dev": "^2.0.0",

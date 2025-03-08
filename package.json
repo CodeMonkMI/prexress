@@ -1,7 +1,7 @@
 {
-  "name": "prisma",
+  "name": "prexress",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript framework for building scalable backend applications with Prisma",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register ./src/index.ts",

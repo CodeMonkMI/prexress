@@ -99,8 +99,9 @@ The repository pattern provides an abstraction layer between the data access log
 
 ### Creating a New Repository
 
-1. Create a new file in the `src/repository` directory, following the naming convention `[model-name].repository.ts`
-2. Extend the BaseRepository class with the appropriate Prisma delegate type
+1. Run `pnpm run pxr:gen user repository`
+2. A file will be generated on `src/repository` directory, following the naming convention `[model-name].repository.ts`. 
+3. Extend the BaseRepository class with the appropriate Prisma delegate type
 
 ```typescript
 import { BaseRepository } from "@/lib/core/repository/BaseRepository";
@@ -122,7 +123,6 @@ export class UserRepository extends BaseRepository<Prisma.UserDelegate> {
   }
 }
 ```
-
 ### Repository Method Overriding
 
 You can override the base methods to customize behavior:
@@ -157,8 +157,9 @@ Services contain the business logic of your application and use repositories for
 
 ### Creating a New Service
 
-1. Create a new file in the `src/services` directory, following the naming convention `[model-name].service.ts`
-2. Extend the BaseService class with the appropriate Prisma delegate type
+1. Run `pnpm run pxr:gen user service`
+2. A file will be generated on `src/services` directory, following the naming convention `[model-name].repository.ts`. 
+3. Extend the BaseService class with the appropriate Prisma delegate type
 
 ```typescript
 import { BaseService } from "@/lib/core/service/BaseService";
@@ -216,9 +217,9 @@ Selectors define which fields should be included in the response when retrieving
 - **Concrete selectors**: Type-specific implementations (e.g., UserSelector)
 
 ### Creating a New Selector
-
-1. Create a new file in the `src/selectors` directory, following the naming convention `[model-name].selector.ts`
-2. Extend the BaseSelector class with the appropriate Prisma delegate type
+1. Run `pnpm run pxr:gen user selector`
+2. A file will be generated on `src/selectors` directory, following the naming convention `[model-name].selector.ts`
+3. Extend the BaseSelector class with the appropriate Prisma delegate type
 
 ```typescript
 import { BaseSelector } from "@/lib/core/selector/BaseSelector";
@@ -275,8 +276,9 @@ Controllers handle HTTP requests and delegate to services. They are responsible 
 
 ### Creating a New Controller
 
-1. Create a new file in the `src/controllers` directory, following the naming convention `[model-name].controller.ts`
-2. Use decorators to define the base path and routes
+1. Run `pnpm run pxr:gen user controller`
+2. A file will be generated on  `src/controllers` directory, following the naming convention `[model-name].controller.ts`
+3. Use decorators to define the base path and routes
 
 ```typescript
 import { Controller } from "@/lib/core/decorator/controller.decorator";
@@ -399,6 +401,8 @@ export class UserController {
 }
 ```
 
+>You can create all at once by running `pnpm run pxr:gen user`. It will generate all the files for you.
+
 ### Controller Best Practices
 
 1. **Keep Controllers Thin**: Controllers should only handle HTTP concerns, not business logic
@@ -407,6 +411,8 @@ export class UserController {
 4. **Appropriate Status Codes**: Use proper HTTP status codes for different scenarios
 5. **Input Validation**: Validate request data before processing
 6. **Middleware Usage**: Apply middleware for cross-cutting concerns like authentication
+
+##
 
 ## Middleware
 
@@ -606,6 +612,7 @@ prexress/
 │   │   │   ├── service/        # Service pattern implementation
 │   │   │   └── selector/       # Selector pattern implementation
 │   │   ├── db/                 # Database connection management
+│   │   ├── script/             # File generation scripts
 │   │   └── utils/              # Utility functions
 │   ├── middlewares/            # Custom middleware functions
 │   │   ├── auth.middleware.ts  # Authentication middleware

@@ -1,18 +1,20 @@
 {
   "name": "prexress",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A TypeScript framework for building scalable backend applications with Prisma",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc && tsc-alias",
-    "migrate:dev": "prisma migrate dev"
+    "migrate:dev": "prisma migrate dev",
+    "pxr:gen": "ts-node src/lib/scripts/generate.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/node": "^22.13.11",
     "ts-node-dev": "^2.0.0",
     "tsc": "^2.0.4",
     "tsc-alias": "^1.8.10",
@@ -27,6 +29,7 @@
     "morgan": "^1.10.0",
     "prisma": "^6.3.0",
     "reflect-metadata": "^0.2.2",
+    "ts-node": "^10.9.2",
     "tsyringe": "^4.8.0"
   }
 }

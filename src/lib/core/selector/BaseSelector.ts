@@ -1,30 +1,15 @@
+import { Prisma } from "@prisma/client";
 import { IBaseSelector } from "./IBaseSelector";
 export abstract class BaseSelector<TDelegate>
   implements IBaseSelector<TDelegate>
 {
-  base: { [key in keyof TDelegate]: boolean } = this.initializeWithTrue();
-  find: { [key in keyof TDelegate]: boolean } = this.base;
-  findOne: { [key in keyof TDelegate]: boolean } = this.base;
-  findById: { [key in keyof TDelegate]: boolean } = this.base;
-  create: { [key in keyof TDelegate]: boolean } = this.base;
-  update: { [key in keyof TDelegate]: boolean } = this.base;
-  delete: { [key in keyof TDelegate]: boolean } = this.base;
+  base: Prisma.Args<TDelegate, "findMany">["select"] = this.getBase();
+  find: Prisma.Args<TDelegate, "findMany">["select"] = this.getBase();
+  findOne: Prisma.Args<TDelegate, "findFirst">["select"] = this.getBase();
+  findById: Prisma.Args<TDelegate, "findUnique">["select"] = this.getBase();
+  create: Prisma.Args<TDelegate, "create">["select"] = this.getBase();
+  update: Prisma.Args<TDelegate, "update">["select"] = this.getBase();
+  delete: Prisma.Args<TDelegate, "delete">["select"] = this.getBase();
 
-  private initializeWithTrue(): { [key in keyof TDelegate]: boolean } {
-    const result = {} as { [key in keyof TDelegate]: boolean };
-    const keys = Object.keys(this.getDelegatePrototype() as any) as Array<
-      keyof TDelegate
-    >;
-
-    for (const key of keys) {
-      result[key] = true;
-    }
-    result["id"] = true;
-    console.log(result);
-    return result;
-  }
-
-  private getDelegatePrototype(): TDelegate {
-    return {} as TDelegate;
-  }
+  abstract getBase(): Prisma.Args<TDelegate, "findMany">["select"];
 }

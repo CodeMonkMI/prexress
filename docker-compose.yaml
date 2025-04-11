@@ -1,8 +1,6 @@
-version: "3.8"
-
 services:
   #Postgresql
-  postgres:
+  postgres-prex:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: postgres
@@ -11,7 +9,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_prex:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -21,7 +19,7 @@ services:
       - app-network
 
 volumes:
-  postgres_data:
+  postgres_data_prex:
 
 networks:
   app-network:

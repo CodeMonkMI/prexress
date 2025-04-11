@@ -1,9 +1,11 @@
+import { Prisma } from "@prisma/client";
+
 export interface IBaseSelector<TDelegate> {
-  base: { [key in keyof TDelegate]: boolean };
-  find: { [key in keyof TDelegate]: boolean };
-  findOne: { [key in keyof TDelegate]: boolean };
-  findById: { [key in keyof TDelegate]: boolean };
-  create: { [key in keyof TDelegate]: boolean };
-  update: { [key in keyof TDelegate]: boolean };
-  delete: { [key in keyof TDelegate]: boolean };
+  base: Prisma.Args<TDelegate, "findMany">["select"];
+  find: Prisma.Args<TDelegate, "findMany">["select"];
+  findOne: Prisma.Args<TDelegate, "findFirst">["select"];
+  findById: Prisma.Args<TDelegate, "findUnique">["select"];
+  create: Prisma.Args<TDelegate, "create">["select"];
+  update: Prisma.Args<TDelegate, "update">["select"];
+  delete: Prisma.Args<TDelegate, "delete">["select"];
 }

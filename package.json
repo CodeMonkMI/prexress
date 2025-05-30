@@ -1,5 +1,5 @@
 {
-  "name": "rp",
+  "name": "prexress",
   "private": true,
   "scripts": {
     "build": "turbo run build",

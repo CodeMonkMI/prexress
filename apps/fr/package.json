@@ -3,14 +3,23 @@
   "version": "1.2.0",
   "description": "A TypeScript framework for building scalable backend applications with Prisma",
   "main": "index.js",
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifiers": true
+  },
   "scripts": {
     "start": "ts-node --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
-    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+    "dev": "ts-node-dev --loader ts-node/esm --respawn  --transpile-only -r tsconfig-paths/register src/index.ts",
     "build": "tsc && tsc-alias",
     "test": "jest",
     "clear": "rm -rf dist",
     "lint": "eslint src --ext .ts",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx src/db/seed"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +46,7 @@
     "drizzle-kit": "^0.31.1",
     "drizzle-orm": "^0.44.0",
     "express": "^4.21.2",
+    "fast-glob": "^3.3.3",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",

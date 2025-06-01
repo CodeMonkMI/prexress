@@ -6,9 +6,11 @@ const dbURl = config.get<string>("database_url");
 
 export default defineConfig({
   out: "./drizzle",
-  schema: "./src/modules/*.schema.ts",
+  schema: "./src/modules/**/*.schema.ts",
   dialect: "postgresql",
   dbCredentials: {
     url: dbURl,
   },
+  verbose: true,
+  strict: true,
 });

@@ -9,7 +9,7 @@ export abstract class DrizzleBaseClientPool implements IDatabase {
   async connect(): Promise<void> {
     try {
       await this.pool?.connect();
-
+      console.log("data connected!");
       this.isConnect = true;
     } catch (error) {
       console.log("Failed to connect to database", error);

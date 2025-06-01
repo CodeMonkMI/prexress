@@ -44,6 +44,9 @@ importers:
       express:
         specifier: ^4.21.2
         version: 4.21.2
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
       morgan:
         specifier: ^1.10.0
         version: 1.10.0

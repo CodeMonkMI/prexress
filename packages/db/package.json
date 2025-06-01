@@ -1,0 +1,35 @@
+{
+  "name": "@pxr/db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc -watch",
+    "build": "tsc",
+    "test": "jest",
+    "clear": "rimraf dist",
+    "check:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@pxr/eslint-config": "workspace:*",
+    "@pxr/typescript-config": "workspace:*",
+    "@types/node": "^22.13.11",
+    "@types/pg": "^8.15.2",
+    "drizzle-kit": "^0.31.1",
+    "rimraf": "^6.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,19 +1,26 @@
 {
-  "name": "prexress",
+  "name": "@pxr/framework",
   "version": "1.2.0",
   "description": "A TypeScript framework for building scalable backend applications with Prisma",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register ./src/index.ts",
+    "start": "ts-node --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
     "build": "tsc && tsc-alias",
-    "migrate:dev": "prisma migrate dev",
-    "pxr:gen": "ts-node src/lib/scripts/generate.ts"
+    "test": "jest",
+    "clear": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "check-types": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@pxr/typescript-config": "workspace:*",
+    "@types/config": "^3.3.5",
+    "@types/cors": "^2.8.18",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.11",
     "ts-node-dev": "^2.0.0",
     "tsc": "^2.0.4",
@@ -22,12 +29,15 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.3.0",
+    "@pxr/core": "workspace:*",
+    "@pxr/db": "workspace:*",
+    "config": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.31.1",
+    "drizzle-orm": "^0.44.0",
     "express": "^4.21.2",
     "morgan": "^1.10.0",
-    "prisma": "^6.3.0",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
     "tsyringe": "^4.8.0"

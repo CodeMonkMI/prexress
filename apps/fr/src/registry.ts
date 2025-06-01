@@ -1,10 +1,10 @@
+import { DBClient, DatabaseClientToken } from "@pxr/db";
 import { container } from "tsyringe";
-import { DatabaseClientPool } from "./lib/db/DatabaseClientPool";
-import { DatabaseClientToken } from "./lib/db/IDatabaseClient";
 
 export async function resolveDependencies() {
   try {
-    const databaseClient = new DatabaseClientPool();
+    const dbUrl = process.env.DATABASE_URL || "";
+    const databaseClient = new DBClient(dbUrl, {});
 
     container.register(DatabaseClientToken, {
       useValue: databaseClient,

@@ -17,16 +17,19 @@ export function createApp() {
   app.use(express.json());
 
   // health route
-  app.get("/health", (req: Request, res: Response): any => {
+  app.get("/health", (req: Request, res: Response) => {
     try {
-      return res.status(200).json({ message: "UP" });
+      res.status(200).json({ message: "UP" });
+      return;
     } catch (e) {
-      return res.status(500).json({ message: "DOWN" });
+      res.status(500).json({ message: "DOWN" });
+      return;
     }
   });
 
   app.get("/", (req: Request, res: Response) => {
-    console.log("object");
+    res.status(200).json({ message: "Welcome to the API" });
+    return;
   });
 
   registerController(app, [UserController]);
@@ -38,8 +41,9 @@ export function createApp() {
 
   // 500 internal server error handler
   app.use((err: any, _req: any, res: Response, _next: any) => {
-    console.error(err);
+    console.error("err");
     res.status(500).json({ message: "Internal Server Error" });
+    return;
   });
 
   return app;

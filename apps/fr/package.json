@@ -1,0 +1,55 @@
+{
+  "name": "@pxr/framework",
+  "version": "1.2.0",
+  "description": "A TypeScript framework for building scalable backend applications with Prisma",
+  "main": "index.js",
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifiers": true
+  },
+  "scripts": {
+    "start": "ts-node --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+    "dev": "ts-node-dev --loader ts-node/esm --respawn  --transpile-only -r tsconfig-paths/register src/index.ts",
+    "build": "tsc && tsc-alias",
+    "test": "jest",
+    "clear": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "check-types": "tsc --noEmit",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx src/db/seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@pxr/typescript-config": "workspace:*",
+    "@types/config": "^3.3.5",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.11",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@pxr/core": "workspace:*",
+    "@pxr/db": "workspace:*",
+    "config": "^4.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.31.1",
+    "drizzle-orm": "^0.44.0",
+    "express": "^4.21.2",
+    "fast-glob": "^3.3.3",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.2.2",
+    "ts-node": "^10.9.2",
+    "tsyringe": "^4.8.0"
+  }
+}

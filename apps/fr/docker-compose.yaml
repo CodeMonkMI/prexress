@@ -1,0 +1,43 @@
+services:
+  #Postgresql
+  postgres-prex:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demo_app
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data_prex:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: on-failure
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+      - "5051:443"
+    depends_on:
+      - postgres-prex
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+    networks:
+      - app-network
+volumes:
+  postgres_data_prex:
+  pgadmin:
+
+networks:
+  app-network:
+    driver: bridge

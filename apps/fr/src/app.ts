@@ -1,4 +1,4 @@
-import { register } from "@pxr/core";
+import { register as registerController } from "@pxr/core";
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
@@ -29,7 +29,7 @@ export function createApp() {
     console.log("object");
   });
 
-  register(app, [UserController]);
+  registerController(app, [UserController]);
 
   // 404 not found handler
   app.use((_req, res: Response) => {

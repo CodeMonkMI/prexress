@@ -15,6 +15,7 @@ export abstract class BaseService<
     try {
       return this.repository.findAll(options);
     } catch (error) {
+      console.log(error);
       throw new Error(`[Base service] FindAll Fetched failed `);
     }
   }

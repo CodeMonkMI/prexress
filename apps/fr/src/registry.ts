@@ -1,4 +1,4 @@
-import { DBClient, DatabaseClientToken } from "@pxr/db";
+import { DatabaseClient, DatabaseClientToken } from "@pxr/db";
 import { container } from "tsyringe";
 
 import { readdir } from "fs/promises";
@@ -31,9 +31,7 @@ async function loadAllSchemas() {
     const allSchemas: Record<string, any> = {};
 
     for (const file of files) {
-      const relativePath = path.relative(__dirname, file).replace(/\\/g, "/");
       const moduleExports = await import(pathToFileURL(file).pathname);
-      console.log(pathToFileURL(relativePath).pathname);
 
       Object.assign(allSchemas, moduleExports);
     }
@@ -49,13 +47,10 @@ export async function resolveDependencies() {
     const schemas = await loadAllSchemas();
 
     const dbUrl = process.env.DATABASE_URL || "";
-    const databaseClient = new DBClient(dbUrl, schemas);
-
+    const databaseClient = new DatabaseClient(dbUrl, schemas);
     container.register(DatabaseClientToken, {
       useValue: databaseClient,
     });
-
-    await databaseClient.connect();
   } catch (error) {
     console.log("[registry]: failed to resolve dependencies");
     throw error;

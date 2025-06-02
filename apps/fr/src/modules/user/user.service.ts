@@ -7,6 +7,10 @@ import { UsersTable } from "./user.schema";
 export class UserService extends BaseService<
   typeof UsersTable,
   UserRepository
-> {}
+> {
+  constructor(repository: UserRepository) {
+    super(repository);
+  }
+}
 
 export const UserServiceToken = Symbol("UserServiceToken");

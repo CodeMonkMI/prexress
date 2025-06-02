@@ -1,4 +1,4 @@
-import { DBClient } from "@pxr/db";
+import { IDatabaseClient } from "@pxr/db";
 import { eq, inArray, SQLWrapper } from "drizzle-orm";
 import { PgTable } from "drizzle-orm/pg-core";
 import { FilterOptions, IBaseRepository, ID } from "./IBaseRepository";
@@ -7,7 +7,7 @@ export class BaseRepository<TTable extends PgTable & { id: SQLWrapper }>
   implements IBaseRepository<TTable>
 {
   constructor(
-    protected readonly db: DBClient,
+    protected readonly db: IDatabaseClient,
     protected readonly table: TTable
   ) {}
   findAll(options?: FilterOptions): Promise<TTable["$inferSelect"][]> {

@@ -1,10 +1,35 @@
+import { drizzle as pgDrizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
-import { Client, IDatabase } from "../IDatabaseClient";
+import {
+  Client,
+  DBConnectionString,
+  DBOptions,
+  IDatabaseClient,
+} from "./IDatabaseClient";
 
-export abstract class DrizzleBaseClientPool implements IDatabase {
+export class DatabaseClient implements IDatabaseClient {
+  protected pool: Pool | null = null;
+  protected client: Client | null = null;
   protected isConnect = false;
-  protected abstract pool: Pool | null;
-  protected abstract client: Client | null;
+
+  constructor(
+    readonly url: DBConnectionString,
+    readonly schema: any,
+    readonly options?: DBOptions
+  ) {
+    const pgPool = new Pool({
+      connectionString: url,
+      ...options,
+    });
+
+    this.pool = pgPool;
+    this.client = pgDrizzle({
+      client: this.pool as Pool,
+      schema,
+    }) as unknown as Client;
+
+    this.connect();
+  }
 
   async connect(): Promise<void> {
     try {

@@ -20,7 +20,7 @@ export type DBOptions = {
   config?: DatabaseConfig;
 };
 
-export interface IDatabase {
+export interface IDatabaseClient {
   connect(url: DBConnectionString, options: DBOptions): Promise<void>;
   disconnect(): Promise<void>;
   getClient(): Client;

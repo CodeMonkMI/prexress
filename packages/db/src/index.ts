@@ -1,2 +1,2 @@
-export { DrizzleClient as DBClient } from "./connection/drizzle";
-export const DatabaseClientToken = Symbol("DatabaseClientToken");
+export { DatabaseClient } from "./DatabaseClient";
+export { DatabaseClientToken, type IDatabaseClient } from "./IDatabaseClient";

@@ -17,7 +17,7 @@ jobs:
       - run: npm install
       - run: npx turbo run build --filter=@pxr/core --filter=@pxr/db --filter=@pxr/cli
       - name: Changeset Realeses
-        uses: changeset/actions@v1
+        uses: changesets/action@v1
         with:
           publish: npm run pkg:publish
         env:

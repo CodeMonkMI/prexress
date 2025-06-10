@@ -1,6 +1,6 @@
 {
   "name": "@prexress/framework",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A TypeScript framework for building scalable backend applications",
   "main": "index.js",
   "ts-node": {
@@ -24,7 +24,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@prexress/typescript-config": "workspace:*",
     "@types/config": "^3.3.5",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.0",
@@ -37,8 +36,8 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@prexress/core": "workspace:*",
-    "@prexress/db": "workspace:*",
+    "@prexress/core": "latest",
+    "@prexress/db": "latest",
     "config": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

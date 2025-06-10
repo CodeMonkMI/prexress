@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.6
+
+### Patch Changes
+
+- 381f499: update file location for local imported file
+
 ## 0.0.5
 
 ### Patch Changes

@@ -7,8 +7,8 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "changeset": "changeset",
-    "publish-packages": "changeset publish"
+    "pkg:change": "changeset",
+    "pkg:publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.4",

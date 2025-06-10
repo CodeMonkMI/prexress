@@ -10,7 +10,7 @@ import { makeServiceCommand } from "./commands/make-service.commands";
 
 const program = new Command();
 
-program.name("PXR Cli").description(pkg.description).version(pkg.version);
+program.name(pkg.name).description(pkg.description).version(pkg.version);
 
 program.addCommand(initCommand);
 program.addCommand(makeControllerCommand);

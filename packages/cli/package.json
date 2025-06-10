@@ -1,17 +1,11 @@
 {
   "name": "@pxr/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A command-line tool for creating pxr projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
     "pxr": "./dist/index.js"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js"
-    }
   },
   "scripts": {
     "start": "node ./dist/index.js init",
@@ -36,6 +30,6 @@
     "rimraf": "^6.0.1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Monirul Islam",
   "license": "ISC"
 }

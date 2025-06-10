@@ -9,8 +9,8 @@
   },
   "scripts": {
     "start": "node ./dist/index.js init",
-    "dev": "tsc -watch && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
-    "build": "tsc && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
+    "dev": "tsc -watch && cp -r ./src/baseFiles ./dist/baseFiles && cp -r ./src/app ./dist/app ",
+    "build": "tsc && cp -r ./src/baseFiles ./dist/baseFiles && cp -r ./src/app ./dist/app",
     "test": "jest",
     "clear": "rimraf dist",
     "check:types": "tsc --noEmit"

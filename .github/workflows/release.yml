@@ -25,9 +25,10 @@ jobs:
       - name: Build the packages
         run: pnpm turbo run build --filter=@pxr/core --filter=@pxr/db --filter=@pxr/cli
 
-      - name: Changeset Realeses
+      - name: Changeset Releases
         uses: changesets/action@v1
         with:
           publish: pnpm run pkg:publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

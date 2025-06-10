@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.4
+
+### Patch Changes
+
+- d96d1e6: renamte template package.json name
+
 ## 1.0.0
 
 ### Major Changes

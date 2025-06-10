@@ -5,7 +5,7 @@ import inquirer from "inquirer";
 import path from "path";
 
 export const initCommand = new Command("init")
-  .description("Initialize a new @pxr/framework project")
+  .description("Initialize a new @prexress/framework project")
   .action(async () => {
     const { name } = await inquirer.prompt([
       {

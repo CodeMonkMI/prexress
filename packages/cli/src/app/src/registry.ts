@@ -1,4 +1,4 @@
-import { DatabaseClient, DatabaseClientToken } from "@pxr/db";
+import { DatabaseClient, DatabaseClientToken } from "@prexress/db";
 import { container } from "tsyringe";
 
 import { readdir } from "fs/promises";

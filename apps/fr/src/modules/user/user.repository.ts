@@ -1,5 +1,5 @@
-import { BaseRepository } from "@pxr/core";
-import { DatabaseClientToken, type IDatabaseClient } from "@pxr/db";
+import { BaseRepository } from "@prexress/core";
+import { DatabaseClientToken, type IDatabaseClient } from "@prexress/db";
 import { autoInjectable, inject } from "tsyringe";
 import { UsersTable } from "./user.schema";
 @autoInjectable()

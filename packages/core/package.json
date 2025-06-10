@@ -1,6 +1,7 @@
 {
-  "name": "@pxr/core",
-  "version": "1.0.0",
+  "name": "@prexress/core",
+  "version": "0.0.1",
+
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,15 +20,15 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.44.0",
-    "@pxr/db": "workspace:*",
+    "@prexress/db": "workspace:*",
     "express": "^4.21.2",
     "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.8.0"
   },
   "devDependencies": {
-    "@pxr/eslint-config": "workspace:*",
-    "@pxr/typescript-config": "workspace:*",
+    "@prexress/eslint-config": "workspace:*",
+    "@prexress/typescript-config": "workspace:*",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.11",
     "@types/pg": "^8.15.2",

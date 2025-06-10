@@ -1,4 +1,4 @@
-import { IDatabaseClient } from "@pxr/db";
+import { IDatabaseClient } from "@prexress/db";
 import { eq, inArray, SQLWrapper } from "drizzle-orm";
 import { PgTable } from "drizzle-orm/pg-core";
 import { FilterOptions, IBaseRepository, ID } from "./IBaseRepository";

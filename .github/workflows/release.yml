@@ -23,7 +23,7 @@ jobs:
         run: pnpm install
 
       - name: Build the packages
-        run: pnpm turbo run build --filter=@pxr/core --filter=@pxr/db --filter=@pxr/cli
+        run: pnpm turbo run build --filter=@prexress/core --filter=@prexress/db --filter=@prexress/cli
 
       - name: Changeset Releases
         uses: changesets/action@v1

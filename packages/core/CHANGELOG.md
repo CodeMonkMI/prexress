@@ -1,5 +1,11 @@
 # @pxr/core
 
+## 0.0.3
+
+### Patch Changes
+
+- aaf7e7d: add declations type and map
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 {
-  "name": "@pxr/db",
+  "name": "@prexress/db",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -22,8 +22,8 @@
     "pg": "^8.16.0"
   },
   "devDependencies": {
-    "@pxr/eslint-config": "workspace:*",
-    "@pxr/typescript-config": "workspace:*",
+    "@prexress/eslint-config": "workspace:*",
+    "@prexress/typescript-config": "workspace:*",
     "@types/node": "^22.13.11",
     "@types/pg": "^8.15.2",
     "drizzle-kit": "^0.31.1",

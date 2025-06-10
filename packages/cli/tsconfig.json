@@ -1,5 +1,5 @@
 {
-    "extends": "@pxr/typescript-config/base.json",
+    "extends": "@prexress/typescript-config/base.json",
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",

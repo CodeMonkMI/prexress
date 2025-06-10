@@ -1,4 +1,4 @@
-import { register as registerController } from "@pxr/core";
+import { register as registerController } from "@prexress/core";
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";

@@ -23,10 +23,10 @@ importers:
 
   apps/fr:
     dependencies:
-      '@pxr/core':
+      '@prexress/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@pxr/db':
+      '@prexress/db':
         specifier: workspace:*
         version: link:../../packages/db
       config:
@@ -63,7 +63,7 @@ importers:
         specifier: ^4.8.0
         version: 4.10.0
     devDependencies:
-      '@pxr/typescript-config':
+      '@prexress/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/config':
@@ -112,10 +112,10 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
     devDependencies:
-      '@pxr/eslint-config':
+      '@prexress/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@pxr/typescript-config':
+      '@prexress/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/commander':
@@ -133,7 +133,7 @@ importers:
 
   packages/core:
     dependencies:
-      '@pxr/db':
+      '@prexress/db':
         specifier: workspace:*
         version: link:../db
       drizzle-orm:
@@ -152,10 +152,10 @@ importers:
         specifier: ^4.8.0
         version: 4.10.0
     devDependencies:
-      '@pxr/eslint-config':
+      '@prexress/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@pxr/typescript-config':
+      '@prexress/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/express':
@@ -183,10 +183,10 @@ importers:
         specifier: ^8.16.0
         version: 8.16.0
     devDependencies:
-      '@pxr/eslint-config':
+      '@prexress/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@pxr/typescript-config':
+      '@prexress/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/node':

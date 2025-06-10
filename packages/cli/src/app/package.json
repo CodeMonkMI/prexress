@@ -1,6 +1,6 @@
 {
-  "name": "@prexress/framework",
-  "version": "1.2.1",
+  "name": "Prexress framework",
+  "version": "1.2.0",
   "description": "A TypeScript framework for building scalable backend applications",
   "main": "index.js",
   "ts-node": {

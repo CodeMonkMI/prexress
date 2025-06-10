@@ -1,7 +1,6 @@
 {
   "name": "@prexress/framework",
   "version": "1.2.1",
-
   "description": "A TypeScript framework for building scalable backend applications with Prisma",
   "main": "index.js",
   "ts-node": {
@@ -51,5 +50,6 @@
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
     "tsyringe": "^4.8.0"
-  }
+  },
+  "private": true
 }

@@ -1,7 +1,7 @@
 {
   "name": "@pxr/framework",
   "version": "1.2.0",
-  "description": "A TypeScript framework for building scalable backend applications with Prisma",
+  "description": "A TypeScript framework for building scalable backend applications",
   "main": "index.js",
   "ts-node": {
     "esm": true,

@@ -1,0 +1,41 @@
+{
+  "name": "@pxr/cli",
+  "version": "0.0.1",
+  "description": "A command-line tool for creating pxr projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "pxr": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "start": "node ./dist/index.js init",
+    "dev": "tsc -watch && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
+    "build": "tsc && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
+    "test": "jest",
+    "clear": "rimraf dist",
+    "check:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^14.0.0",
+    "inquirer": "^12.6.3",
+    "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@pxr/eslint-config": "workspace:*",
+    "@pxr/typescript-config": "workspace:*",
+    "@types/commander": "^2.12.5",
+    "@types/inquirer": "^9.0.8",
+    "@types/node": "^22.13.11",
+    "rimraf": "^6.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

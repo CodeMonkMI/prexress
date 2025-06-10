@@ -1,6 +1,6 @@
-import { UserRepository } from "@/modules/user/user.repository";
 import { BaseService } from "@prexress/core";
 import { autoInjectable } from "tsyringe";
+import { UserRepository } from "./user.repository";
 import { UsersTable } from "./user.schema";
 
 @autoInjectable()

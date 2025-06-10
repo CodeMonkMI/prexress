@@ -1,7 +1,7 @@
-import { UserService } from "@/modules/user/user.service";
 import { Controller, GET, POST } from "@prexress/core";
 import { type NextFunction, type Request, type Response } from "express";
 import { autoInjectable } from "tsyringe";
+import { UserService } from "./user.service";
 
 @autoInjectable()
 @Controller("/user")

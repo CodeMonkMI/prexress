@@ -1,5 +1,13 @@
 # @pxr/core
 
+## 0.0.4
+
+### Patch Changes
+
+- 02b62ba: update npmigore to add types
+- Updated dependencies [02b62ba]
+  - @prexress/db@0.0.3
+
 ## 0.0.3
 
 ### Patch Changes

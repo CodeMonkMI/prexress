@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import inquirer from "inquirer";
+import path from "path";
 
 export const makeControllerCommand = new Command("make:controller")
   .description("Create a new controller")
@@ -48,7 +49,8 @@ export const makeController = async (
   name: string,
   moduleName: string = name
 ) => {
-  const data = fs.readFileSync("./src/baseFiles/user.controller.ts", "utf-8");
+  const pathName = path.resolve(__dirname, "../baseFiles/user.controller.ts");
+  const data = fs.readFileSync(pathName, "utf-8");
   const controller = data
     .replace(/User/g, name)
     .replace(/user/g, name.toLowerCase());

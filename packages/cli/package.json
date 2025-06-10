@@ -4,6 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "pxr": "./dist/index.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -11,9 +14,9 @@
     }
   },
   "scripts": {
-    "start": "node ./dist/index.js make:module",
-    "dev": "tsc -watch && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles",
-    "build": "tsc && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles",
+    "start": "node ./dist/index.js init",
+    "dev": "tsc -watch && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
+    "build": "tsc && xcopy /E /I /Y .\\src\\baseFiles .\\dist\\baseFiles && xcopy /E /I /Y .\\src\\app .\\dist\\app",
     "test": "jest",
     "clear": "rimraf dist",
     "check:types": "tsc --noEmit"

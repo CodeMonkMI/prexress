@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import inquirer from "inquirer";
+import path from "path";
 
 export const makeRepositoryCommand = new Command("make:repo")
   .description("Create a new repository")
@@ -45,7 +46,8 @@ export const makeRepository = async (
   name: string,
   moduleName: string = name
 ) => {
-  const data = fs.readFileSync("./src/baseFiles/user.repository.ts", "utf-8");
+  const pathName = path.resolve(__dirname, "../baseFiles/user.repository.ts");
+  const data = fs.readFileSync(pathName, "utf-8");
   const repository = data
     .replace(/User/g, name)
     .replace(/user/g, name.toLowerCase());

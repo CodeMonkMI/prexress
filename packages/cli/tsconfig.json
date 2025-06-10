@@ -18,6 +18,7 @@
         "node_modules",
         "dist",
         "src/modules",
-        "src/baseFiles"
+        "src/baseFiles",
+        "src/app"
     ],
 }

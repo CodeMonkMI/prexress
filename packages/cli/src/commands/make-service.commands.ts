@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import inquirer from "inquirer";
+import path from "path";
 
 export const makeServiceCommand = new Command("make:service")
   .description("Create a new service")
@@ -44,7 +45,8 @@ export const makeServiceCommand = new Command("make:service")
   });
 
 export const makeService = async (name: string, moduleName: string = name) => {
-  const data = fs.readFileSync("./src/baseFiles/user.service.ts", "utf-8");
+  const pathName = path.resolve(__dirname, "../baseFiles/user.service.ts");
+  const data = fs.readFileSync(pathName, "utf-8");
   const service = data
     .replace(/User/g, name)
     .replace(/user/g, name.toLowerCase());

@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import inquirer from "inquirer";
+import path from "path";
 
 export const makeMiddlewareCommand = new Command("make:middleware")
   .description("Create a new middleware")
@@ -44,7 +45,8 @@ export const makeMiddleware = async (
   name: string,
   moduleName: string = name
 ) => {
-  const data = fs.readFileSync("./src/baseFiles/user.middleware.ts", "utf-8");
+  const pathName = path.resolve(__dirname, "../baseFiles/user.middleware.ts");
+  const data = fs.readFileSync(pathName, "utf-8");
   const middleware = data
     .replace(/User/g, name)
     .replace(/user/g, name.toLowerCase());

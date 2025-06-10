@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import inquirer from "inquirer";
+import path from "path";
 
 export const makeSchemaCommand = new Command("make:schema")
   .description("Create a new schema")
@@ -41,7 +42,8 @@ export const makeSchemaCommand = new Command("make:schema")
   });
 
 export const makeSchema = async (name: string, moduleName: string = name) => {
-  const data = fs.readFileSync("./src/baseFiles/user.schema.ts", "utf-8");
+  const pathName = path.resolve(__dirname, "../baseFiles/user.schema.ts");
+  const data = fs.readFileSync(pathName, "utf-8");
   const schema = data
     .replace(/User/g, name)
     .replace(/user/g, name.toLowerCase());

@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.5
+
+### Patch Changes
+
+- ae857c6: remove development files and folders
+
 ## 0.0.4
 
 ### Patch Changes

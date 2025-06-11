@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.7
+
+### Patch Changes
+
+- f527dee: Add doucmentation for cli and project scafoldings
+
 ## 0.0.6
 
 ### Patch Changes

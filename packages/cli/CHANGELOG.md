@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.9
+
+### Patch Changes
+
+- 9aadadd: enviroment file generating command added
+
 ## 0.0.8
 
 ### Patch Changes

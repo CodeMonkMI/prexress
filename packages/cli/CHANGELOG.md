@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.8
+
+### Patch Changes
+
+- 28e0c5d: update cli and added some file to generate
+
 ## 0.0.7
 
 ### Patch Changes

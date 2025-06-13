@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.12
+
+### Patch Changes
+
+- 3adfc59: update readme for extra docker instructions
+
 ## 0.0.11
 
 ### Patch Changes

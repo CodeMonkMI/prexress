@@ -21,7 +21,7 @@ export const initCommand = new Command("init")
       {
         name: "name",
         type: "input",
-        message: "Enter the name of you project: ",
+        message: "Enter the name of the project: ",
         validate(input: string) {
           if (!input) {
             return "Please enter a valid name";
@@ -95,6 +95,13 @@ export const initCommand = new Command("init")
 
       console.log(chalk.yellow("Installing required dependencies.."));
       execSync("pnpm install", { cwd: targetDir, stdio: "inherit" });
+
+      // 🔁 Copy .env.example -> .env if applicable
+      console.log(chalk.yellow("Generating environment file.."));
+      const envExamplePath = path.join(targetDir, ".env.example");
+      const envTargetPath = path.join(targetDir, ".env");
+      fs.copyFileSync(envExamplePath, envTargetPath);
+      console.log(chalk.green(".env file generated"));
 
       console.log(
         chalk.yellow("Generating database sql from database schema..")

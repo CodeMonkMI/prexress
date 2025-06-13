@@ -36,9 +36,34 @@ pxr init
 
 This sets up the initial project structure with a basic configuration, default modules, and dependencies.
 
-### Prexress CLI 
-You will find proper cli documentation over here. 
-[@prexress/cli](https://www.npmjs.com/package/@prexress/cli)
+---
+
+## Start Working
+
+- Install required dependencies
+
+```bash
+pnpm install
+```
+
+- Generate migration for database schema
+
+```bash
+pnpm run db:generate
+```
+
+- Push migration to database
+
+```bash
+pnpm run db:migrate
+```
+
+---
+
+## Prexress CLI
+
+You will find proper cli documentation over here.
+[@prexress/cli](./packages/cli/README.md)
 
 ---
 
@@ -67,15 +92,18 @@ src/
 ## 📦 Package Separation
 
 ### Core Package (`@prexress/core`)
+
 - Base classes for controllers, services, selectors, and repositories
 - Common decorators
 - Dependency Injection and utility helpers
 
 ### DB Package (`@prexress/db`)
+
 - Drizzle ORM setup and configuration
 - Connection pool management
 
 ### Helpers (planned)
+
 - Authorization (RBAC)
 - JWT + Passport strategies
 
@@ -98,6 +126,7 @@ src/
 ## 🧠 Usage Philosophy
 
 ### Repository
+
 Encapsulates data access using Drizzle's `db.select`, `db.insert`, etc.
 
 ```ts
@@ -109,6 +138,7 @@ export class UserRepository extends BaseRepository {
 ```
 
 ### Service
+
 Contains validation and orchestrates domain logic.
 
 ```ts
@@ -121,6 +151,7 @@ export class UserService extends BaseService {
 ```
 
 ### Controller
+
 Maps routes to service methods using expressive decorators.
 
 ```ts
@@ -128,7 +159,7 @@ Maps routes to service methods using expressive decorators.
 @Controller("/api/v1/users")
 export class UserController {
   constructor(readonly userService: UserService) {}
-  
+
   @POST("/")
   async create(req: Request, res: Response) {
     const user = await this.userService.create(req.body);
@@ -148,6 +179,7 @@ Supports multi-layer middleware:
 - Route-specific
 
 Example:
+
 ```ts
 @Use(authMiddleware)
 @POST("/")
@@ -166,8 +198,6 @@ Global error handler is included for graceful failures.
 - Multi-DB adapters
 
 ---
-
-
 
 ## 📄 License
 

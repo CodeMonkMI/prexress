@@ -1,6 +1,6 @@
 src/
-tsconfig.json
-.env*
+.env
+./tsconfig.json
 .DS_Store
 node_modules/
 coverage/

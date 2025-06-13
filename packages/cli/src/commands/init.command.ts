@@ -14,6 +14,15 @@ function checkIfPnpmExist(): boolean {
   }
 }
 
+function checkIfDockerExists(): boolean {
+  try {
+    execSync("docker --version", { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export const initCommand = new Command("init")
   .description("Initialize a new @prexress/framework project")
   .action(async () => {
@@ -107,6 +116,45 @@ export const initCommand = new Command("init")
         chalk.yellow("Generating database sql from database schema..")
       );
       execSync("pnpm run db:generate", { cwd: targetDir, stdio: "inherit" });
+
+      // 🐳 Check for Docker and handle DB migration accordingly
+      if (!checkIfDockerExists()) {
+        console.warn(
+          chalk.red("⚠️ Docker is not installed or not available in PATH.")
+        );
+        console.log(chalk.yellow("Database migration step was skipped."));
+        console.log(
+          chalk.yellow("You can use docker or install postgressql database")
+        );
+
+        console.log(chalk.yellow("For docker use following steps:"));
+        console.log(chalk.yellow("To enable database setup, please:"));
+        console.log(
+          "1. Install Docker: " +
+            chalk.cyan("https://www.docker.com/products/docker-desktop")
+        );
+        console.log(`2. Run the following commands manually:`);
+
+        console.log(chalk.blue("   docker compose up -d"));
+
+        console.log(chalk.yellow("For local postgresql:"));
+        console.log(chalk.yellow("1. Install postgressql database."));
+        console.log(chalk.yellow("2. Setup .env file's environment"));
+
+        console.log(`Now run the following commands manually:`);
+        console.log(chalk.blue("   pnpm run db:migrate"));
+        process.exit(1);
+      }
+
+      console.log(chalk.yellow("Running Docker containers..."));
+      execSync("docker compose up -d", { cwd: targetDir, stdio: "inherit" });
+
+      console.log(chalk.yellow("Running database migration..."));
+      execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });
+
+      console.log(
+        chalk.green("✅ Docker containers started and DB migration completed.")
+      );
 
       console.log(chalk.yellow("Migrating database sql to database.."));
       execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });

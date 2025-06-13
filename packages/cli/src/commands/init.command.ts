@@ -146,20 +146,19 @@ export const initCommand = new Command("init")
         process.exit(1);
       }
 
-      console.log(chalk.yellow("Running Docker containers..."));
       execSync("docker compose up -d", { cwd: targetDir, stdio: "inherit" });
+      console.log(chalk.yellow("Running Docker containers..."));
+      setTimeout(() => {
+        console.log(chalk.yellow("Running database migration..."));
+        execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });
 
-      console.log(chalk.yellow("Running database migration..."));
-      execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });
+        console.log(chalk.green("✅ DB migration completed."));
 
-      console.log(
-        chalk.green("✅ Docker containers started and DB migration completed.")
-      );
+        console.log(chalk.yellow("Migrating database sql to database.."));
+        execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });
 
-      console.log(chalk.yellow("Migrating database sql to database.."));
-      execSync("pnpm run db:migrate", { cwd: targetDir, stdio: "inherit" });
-
-      console.log(chalk.green("✅ Project setup complete."));
+        console.log(chalk.green("✅ Project setup complete."));
+      }, 3000);
     } catch (error) {
       console.error(chalk.red((error as any).message));
     }

@@ -1,5 +1,11 @@
 # @pxr/cli
 
+## 0.0.10
+
+### Patch Changes
+
+- 0685f59: add docker option
+
 ## 0.0.9
 
 ### Patch Changes

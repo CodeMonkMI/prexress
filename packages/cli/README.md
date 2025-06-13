@@ -1,4 +1,3 @@
-
 # Prexress CLI
 
 ## 🚀 Overview
@@ -35,21 +34,23 @@ To create a new Prexress project:
 pxr init
 ```
 
+> N:B: For continuous flow `init` command make your machine have already running docker. more precisely need `docker compose`
+
 This sets up the initial project structure with a basic configuration, default modules, and dependencies.
 
 ---
 
 ## 🚀 Available CLI Commands
 
-| Command               | Description                                                                 |
-|-----------------------|-----------------------------------------------------------------------------|
-| `pxr init`            | Scaffold a new Prexress project                                             |
-| `pxr make:module`     | Generate a full module (`controller`, `service`, `schema`, `middleware`)   |
-| `pxr make:controller` | Create a basic controller inside a module                                   |
-| `pxr make:service`    | Generate a service class for business logic                                 |
-| `pxr make:schema`     | Define a new schema using **Drizzle ORM**                                   |
-| `pxr make:middleware` | Generate a middleware class                                                 |
-| `pxr make:repository` | Create a repository class for data access                                   |
+| Command               | Description                                                              |
+| --------------------- | ------------------------------------------------------------------------ |
+| `pxr init`            | Scaffold a new Prexress project                                          |
+| `pxr make:module`     | Generate a full module (`controller`, `service`, `schema`, `middleware`) |
+| `pxr make:controller` | Create a basic controller inside a module                                |
+| `pxr make:service`    | Generate a service class for business logic                              |
+| `pxr make:schema`     | Define a new schema using **Drizzle ORM**                                |
+| `pxr make:middleware` | Generate a middleware class                                              |
+| `pxr make:repository` | Create a repository class for data access                                |
 
 Each command is interactive and prompts you to enter relevant names and configuration options during generation.
 
@@ -80,7 +81,7 @@ Generates an entire feature module, including:
 - Middleware
 
 ```bash
-pxr make:module 
+pxr make:module
 ```
 
 Example:
@@ -96,7 +97,7 @@ pxr make:module user
 Creates a controller file for an existing or new module.
 
 ```bash
-pxr make:controller 
+pxr make:controller
 ```
 
 Example:
@@ -112,7 +113,7 @@ pxr make:controller
 Generates a service class for a module, containing the business logic.
 
 ```bash
-pxr make:service 
+pxr make:service
 ```
 
 ---
@@ -122,7 +123,7 @@ pxr make:service
 Creates a Drizzle ORM schema file for a specific model.
 
 ```bash
-pxr make:schema 
+pxr make:schema
 ```
 
 ---
@@ -132,7 +133,7 @@ pxr make:schema
 Generates a basic middleware class.
 
 ```bash
-pxr make:middleware 
+pxr make:middleware
 ```
 
 ---
@@ -142,7 +143,7 @@ pxr make:middleware
 Creates a repository for managing database operations.
 
 ```bash
-pxr make:repository 
+pxr make:repository
 ```
 
 ---
@@ -162,10 +163,6 @@ pnpm update -g @prexress/cli
 - Always run `pxr init` inside an empty directory.
 - Follow consistent naming conventions (e.g., lowercase module names).
 - Use version control (`git`) to track scaffolding changes.
-
-
-
-
 
 # 📬 Contributing
 
